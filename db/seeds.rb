@@ -24,6 +24,10 @@ facts = Fact.create([
     creator: "chicken place owner"
   },
   {
+    content: "blind people at birth don't have dreams cuase they have never seen anything.",
+    creator: "creep"
+  },
+  {
     content: "it takes 15min for brain to know how much you are full",
     creator: "another food fighter"
   }
@@ -53,5 +57,5 @@ comments = Comment.create([
     stars: 3,
     creator: "dieter",
     fact: facts.last,
-  },
+  }
 ])
