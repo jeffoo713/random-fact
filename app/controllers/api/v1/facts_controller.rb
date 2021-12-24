@@ -6,20 +6,20 @@ module Api
       def index
         facts = Fact.all
 
-        render json: FactSerializer.new(facts, options).serialized_json
+        render json: facts
       end
 
       def show
         fact = Fact.find_by(id: params[:id])
 
-        render json: FactSerializer.new(fact, options).serialized_json
+        render json: fact
       end
 
       def create
         fact = Fact.new(fact_params)
 
         if fact.save
-          render json: FactSerializer.new(fact).serialized_json
+          render json: fact
         else
           render json: {error: fact.errors.messages }, status: 422
         end
@@ -29,7 +29,7 @@ module Api
         fact = Fact.find_by(id: params[:id])
 
         if fact.update(fact_params)
-          render json: FactSerializer.new(fact, options).serialized_json
+          render json: fact
         else
           render json: {error: fact.errors.messages }, status: 422
         end
@@ -39,7 +39,7 @@ module Api
         fact = Fact.find_by(id: params[:id])
 
         if fact.destroy
-          head :no_content
+          render json: "the fact is deleted successfully", status: 200
         else
           render json: {error: fact.errors.messages }, status: 422
         end
