@@ -1,5 +1,4 @@
-class FactSerializer
-  include FastJsonapi::ObjectSerializer
+class FactSerializer < ActiveModel::Serializer
   attributes :content, :creator, :id
 
   has_many :comments

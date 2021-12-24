@@ -7,7 +7,7 @@ module Api
         comment = Comment.new(comment_params)
 
         if comment.save
-          render json: CommentSerializer.new(comment_params).serialized_json  
+          render json: comment
         else
           render json: { error: comment.errors.messages }, status: 422
         end
@@ -17,7 +17,7 @@ module Api
         comment = Comment.find_by(id: params[:id])
                 
         if comment.destroy
-          head :no_content 
+          render json: "the comment is deleted successfully", status: 200 
         else
           render json: { error: comment.errors.messages }, status: 422
         end
