@@ -1,3 +1,5 @@
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id, :content, :stars, :creator, :fact_id
+  belongs_to :fact
+
+  attributes :id, :content, :stars, :creator, :created_at
 end

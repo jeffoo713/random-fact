@@ -6,6 +6,8 @@ module Api
       def index
         facts = Fact.all
 
+        # render json: facts.to_json(only: [:id, :content, :creator, :updated_at], include: [comments: {only: [:content, :creator, :created_at]}])
+        # render json: facts.to_json(except: [:created_at], include: [comments: {only: [:content, :creator, :created_at]}])
         render json: facts
       end
 
@@ -13,6 +15,7 @@ module Api
         fact = Fact.find_by(id: params[:id])
 
         render json: fact
+
       end
 
       def create
@@ -21,7 +24,7 @@ module Api
         if fact.save
           render json: fact
         else
-          render json: {error: fact.errors.messages }, status: 422
+          render json: {error: fact.errors.messages}, status: 422
         end
       end
       
@@ -31,7 +34,7 @@ module Api
         if fact.update(fact_params)
           render json: fact
         else
-          render json: {error: fact.errors.messages }, status: 422
+          render json: {error: fact.errors.messages}, status: 422
         end
       end
 
@@ -41,7 +44,7 @@ module Api
         if fact.destroy
           render json: "the fact is deleted successfully", status: 200
         else
-          render json: {error: fact.errors.messages }, status: 422
+          render json: {error: fact.errors.messages}, status: 422
         end
       end
       
@@ -52,9 +55,9 @@ module Api
       end
       
       # to bring related data (compound document)
-      def options
-        @options ||= { include: %i[comments] }        
-      end
+      # def options
+      #   @options ||= { include: %i[comments]}        
+      # end
       
     end
   end
