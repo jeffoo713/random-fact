@@ -9,7 +9,7 @@ module Api
         if comment.save
           render json: comment
         else
-          render json: { error: comment.errors.messages }, status: 422
+          render json: { error: comment.errors.messages}, status: 422
         end
       end
       
@@ -19,7 +19,7 @@ module Api
         if comment.destroy
           render json: "the comment is deleted successfully", status: 200 
         else
-          render json: { error: comment.errors.messages }, status: 422
+          render json: { error: comment.errors.messages}, status: 422
         end
       end
 

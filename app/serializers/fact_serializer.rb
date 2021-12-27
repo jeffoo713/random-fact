@@ -1,5 +1,5 @@
 class FactSerializer < ActiveModel::Serializer
-  attributes :content, :creator, :id
-
   has_many :comments
+
+  attributes :content, :creator, :id, :updated_at
 end

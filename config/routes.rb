@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :facts, param: :id
+      resources :facts, only: [:index, :create, :show, :update, :destroy, :get_avg_stars]#, param: :id
       resources :comments, only: [:create, :destroy]
     end
   end
